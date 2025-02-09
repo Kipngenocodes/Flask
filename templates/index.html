@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Website</title>
+    <style>
+        /* General Styling */
+        html, body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-y: auto; /* Allows vertical scrolling */
+        }
+
+        /* Scrollbar Styling */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        /* Main Content Container */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            width: 60%;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow-y: auto; /* Enables scrolling inside container if needed */
+            max-height: 80vh; /* Limits height to 80% of viewport */
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hello, I am Kipngeno Chepkwony. </h1>
+        <p>Hey there! Can we be friends? Feel free to connect with me below.</p>
+
+        <p>
+            I am cybersecurity and data science enthusiast. 
+        </p>
+
+        <div class="social-links">
+            <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
+            <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
+            <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
+            <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
+        </div>
+    </div>
+
+</body>
+</html>
