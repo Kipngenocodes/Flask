@@ -5,39 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Website</title>
     <style>
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
             text-align: center;
             margin: 0;
             padding: 0;
         }
+
+        /* Container Styling */
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             width: 60%;
             margin: 50px auto;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
+
         h1 {
-            color: #007bff;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Social Media Links */
         .social-links {
             margin-top: 20px;
         }
+
         .social-links a {
             display: inline-block;
             margin: 10px;
-            padding: 10px 15px;
+            padding: 12px 20px;
             text-decoration: none;
             color: white;
-            background-color: #007bff;
-            border-radius: 5px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            transition: all 0.3s ease;
             font-size: 18px;
         }
+
         .social-links a:hover {
-            background-color: #0056b3;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -45,7 +80,7 @@
 
     <div class="container">
         <h1>Welcome to My Website!</h1>
-        <p>Hello! Can we be friends? Feel free to connect with me on my social media.</p>
+        <p>Hey there! Can we be friends? Feel free to connect with me below.</p>
 
         <div class="social-links">
             <a href="https://twitter.com/your_twitter" target="_blank">Twitter</a>
