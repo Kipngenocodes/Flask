@@ -6,16 +6,30 @@
     <title>Welcome to My Website</title>
     <style>
         /* General Styling */
-        body {
+        html, body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
             text-align: center;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            overflow-y: auto; /* Allows vertical scrolling */
         }
 
-        /* Container Styling */
+        /* Scrollbar Styling */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        /* Main Content Container */
         .container {
             background: rgba(255, 255, 255, 0.1);
             width: 60%;
@@ -23,6 +37,8 @@
             padding: 30px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            overflow-y: auto; /* Enables scrolling inside container if needed */
+            max-height: 80vh; /* Limits height to 80% of viewport */
         }
 
         h1 {
@@ -79,14 +95,18 @@
 <body>
 
     <div class="container">
-        <h1>Welcome to My Website!</h1>
+        <h1>Hello, I am Kipngeno Chepkwony. </h1>
         <p>Hey there! Can we be friends? Feel free to connect with me below.</p>
 
+        <p>
+            I am cybersecurity and data science enthusiast. 
+        </p>
+
         <div class="social-links">
-            <a href="https://twitter.com/your_twitter" target="_blank">Twitter</a>
+            <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
             <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
             <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
-            <a href="mailto:kipngenoalex.c@gmail.com">Email Me</a>
+            <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
         </div>
     </div>
 
