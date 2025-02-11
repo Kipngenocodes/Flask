@@ -3,89 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kipcodes</title>
+    <title>Kipcodes - Cybersecurity & Data Science</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
+        /* Background Animation */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Smooth Appearance */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         /* General Styling */
-        html, body {
+        body {
+            background: linear-gradient(270deg, #ff6b6b, #6b5b95, #45aaf2, #20bf6b);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
             text-align: center;
-            margin: 0;
-            padding: 0;
+            color: white;
             height: 100vh;
-            overflow-y: auto; /* Allows vertical scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        /* Scrollbar Styling */
-        body::-webkit-scrollbar {
-            width: 8px;
-        }
-        body::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        body::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-        }
-
-        /* Main Content Container */
+        /* Main Content Box */
         .container {
             background: rgba(255, 255, 255, 0.1);
-            width: 60%;
-            margin: 50px auto;
             padding: 30px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow-y: auto; /* Enables scrolling inside container if needed */
-            max-height: 80vh; /* Limits height to 80% of viewport */
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in-out;
         }
 
+        /* Header Styling */
         h1 {
             font-size: 36px;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
         }
 
         p {
             font-size: 18px;
             opacity: 0.9;
+            margin-bottom: 10px;
         }
 
-        /* Social Media Links */
-        .social-links {
-            margin-top: 20px;
-        }
-
+        /* Social Media Buttons */
         .social-links a {
             display: inline-block;
             margin: 10px;
             padding: 12px 20px;
             text-decoration: none;
-            color: white;
             font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
+            font-size: 18px;
             border-radius: 30px;
             transition: all 0.3s ease;
-            font-size: 18px;
+            animation: fadeIn 1.2s ease-in-out;
         }
 
+        /* Unique Colors */
+        .twitter { background: #1DA1F2; color: white; }
+        .linkedin { background: #0077B5; color: white; }
+        .github { background: #333; color: white; }
+        .email { background: #FF5733; color: white; }
+
+        /* Hover Effects */
         .social-links a:hover {
-            background: rgba(255, 255, 255, 0.5);
             transform: scale(1.1);
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 width: 90%;
                 padding: 20px;
             }
-
             h1 {
                 font-size: 28px;
             }
-
             p {
                 font-size: 16px;
             }
@@ -95,18 +105,15 @@
 <body>
 
     <div class="container">
-        <h1>Hello, I am Kipngeno Chepkwony.</h1>
+        <h1> Welcome to Kipcodes! </h1>
         <p>Hey there! Can we be friends? Feel free to connect with me below.</p>
-
-        <p>
-            I am a cybersecurity and data science enthusiast.
-        </p>
+        <p>I am a <strong>Cybersecurity & Data Science</strong> enthusiast.</p>
 
         <div class="social-links">
-            <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
-            <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
-            <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
-            <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
+            <a href="https://twitter.com/akcempire" target="_blank" class="twitter">Twitter</a>
+            <a href="https://www.linkedin.com/in/your_linkedin" target="_blank" class="linkedin">LinkedIn</a>
+            <a href="https://github.com/kipngenocodes" target="_blank" class="github">GitHub</a>
+            <a href="mailto:kipngenocodes@gmail.com" class="email">Email Me</a>
         </div>
     </div>
 
