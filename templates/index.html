@@ -6,55 +6,22 @@
     <title>Kipcode</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Floating Buttons */
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #6a11cb;
-            color: white;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease-in-out;
-        }
-        .floating-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Profile Card */
         .profile-card {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
+            width: 400px;
             background: white;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            display: none;
-            flex-direction: column;
-            align-items: center;
+            padding: 20px;
             text-align: center;
-            transition: opacity 0.3s, transform 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
         }
+
         .profile-card h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
             color: #6a11cb;
         }
-        .profile-card p {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #333;
-        }
+
         .social-links a {
             display: inline-block;
             margin: 5px;
@@ -69,38 +36,29 @@
             background: #511a91;
         }
 
-        /* Chatbot */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            display: none;
-            flex-direction: column;
-        }
-        .chat-header {
+        /* Chatbot Button */
+        .chatbot-btn {
+            display: block;
+            margin: 20px auto;
             background: #6a11cb;
             color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .chatbot-btn:hover {
+            background: #511a91;
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-center h-screen flex flex-col justify-center items-center">
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white flex justify-center items-center h-screen">
 
-    <!-- Profile Floating Button -->
-    <div class="floating-btn" onclick="toggleProfile()">ℹ️</div>
-
-    <!-- Profile Card -->
-    <div class="profile-card" id="profile-card">
+    <div class="profile-card">
         <h1>Hello, I'm Kipngeno Chepkwony</h1>
         <p>I am a Cybersecurity and Data Science enthusiast.</p>
-        
+
         <div class="social-links">
             <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
             <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
@@ -108,52 +66,9 @@
             <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
         </div>
 
-        <button class="floating-btn" onclick="toggleChat()">💬</button>
+        <!-- Button to open Chatbot -->
+        <a href="/chatbot" class="chatbot-btn">Open Chatbot 💬</a>
     </div>
 
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbot">
-        <div class="chat-header" onclick="toggleChat()">Chat with Me</div>
-        <div class="chat-messages" id="chat-messages"></div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Type your message..." />
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
-
-    <script>
-        function toggleProfile() {
-            let profileCard = document.getElementById("profile-card");
-            profileCard.style.display = profileCard.style.display === "none" ? "flex" : "none";
-        }
-
-        function toggleChat() {
-            let chatbot = document.getElementById("chatbot");
-            chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
-        }
-
-        async function sendMessage() {
-            let messageInput = document.getElementById("message-input");
-            let message = messageInput.value.trim();
-            let chatMessages = document.getElementById("chat-messages");
-
-            if (!message) return;
-
-            chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
-            messageInput.value = "";
-
-            let response = await fetch("/telegram-webhook", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ user_id: "visitor", message: message })
-            });
-
-            let data = await response.json();
-            setTimeout(() => {
-                chatMessages.innerHTML += `<div class="bot-message">${data.message || "I'll get back to you soon!"}</div>`;
-            }, 1000);
-        }
-    </script>
-  
 </body>
 </html>

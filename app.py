@@ -1,11 +1,10 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
 import datetime
 
-# Initialize Flask app
-app = Flask(__name__, static_folder="static", template_folder="templates")
+app = Flask(__name__, template_folder="templates", static_folder="static")
 
 # Database Configuration
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -28,21 +27,20 @@ class Message(db.Model):
 with app.app_context():
     db.create_all()
 
-# Serve the HTML frontend
+# Serve the Profile Webpage
 @app.route("/")
-def serve_index():
-    return send_from_directory("templates", "index.html")
+def home():
+    return render_template("index.html")
 
-# Serve static files (CSS, JS)
-@app.route("/static/<path:path>")
-def serve_static(path):
-    return send_from_directory("static", path)
+# Serve the Chatbot Standalone Page
+@app.route("/chatbot")
+def chatbot():
+    return render_template("chatbot.html")
 
 # Save Message from Telegram Webhook
 @app.route("/telegram-webhook", methods=["POST"])
 def telegram_webhook():
     data = request.get_json()
-
     if not data or "user_id" not in data or "message" not in data:
         return jsonify({"error": "Invalid request"}), 400
 
