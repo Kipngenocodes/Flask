@@ -1,7 +1,7 @@
-/* Root Variables */
+/* Root Variables for Colors */
 :root {
-    --primary-color: #6a11cb;  /* Main theme color */
-    --secondary-color: #2575fc; /* Gradient */
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
     --background-light: #ffffff;
     --background-dark: #1a1a2e;
     --text-light: #ffffff;
@@ -11,14 +11,25 @@
     --card-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* Dynamic Background Gradient */
+/* Background Animation */
+@keyframes backgroundGradient {
+    0% { background: linear-gradient(120deg, #6a11cb, #2575fc); }
+    50% { background: linear-gradient(120deg, #ff4b2b, #ff416c); }
+    100% { background: linear-gradient(120deg, #6a11cb, #2575fc); }
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    animation: backgroundGradient 10s infinite alternate ease-in-out;
     color: var(--text-light);
     text-align: center;
     margin: 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     transition: all 0.5s ease-in-out;
 }
 
@@ -28,7 +39,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     max-width: 400px;
-    margin: auto;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease-in-out;
 }
@@ -49,34 +59,18 @@ body {
     background: var(--button-hover);
 }
 
-/* Button */
-.chatbot-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background: var(--button-bg);
-    color: var(--text-light);
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.chatbot-btn:hover {
-    background: var(--button-hover);
-    transform: scale(1.05);
-}
-
-/* Chatbot */
+/* Chatbot Styles */
 .chatbot-container {
-    width: 350px;
     position: fixed;
     bottom: 20px;
     right: 20px;
+    width: 350px;
     background: var(--background-light);
     color: var(--text-dark);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
     transition: all 0.3s ease-in-out;
 }
 
@@ -87,32 +81,80 @@ body {
     padding: 10px;
     font-weight: bold;
     border-radius: 10px 10px 0 0;
+    text-align: center;
+    cursor: pointer;
 }
 
-/* Messages */
+/* Chat Messages */
 .chat-messages {
     height: 250px;
     overflow-y: auto;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* User and Bot Messages */
+/* User & Bot Messages */
 .user-message, .bot-message {
     padding: 8px;
     border-radius: 8px;
     max-width: 80%;
+    margin: 5px;
 }
 
 .user-message {
+    align-self: flex-end;
     background: var(--primary-color);
     color: var(--text-light);
-    align-self: flex-end;
 }
 
 .bot-message {
+    align-self: flex-start;
     background: #e0e0e0;
     color: var(--text-dark);
-    align-self: flex-start;
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.chat-input button {
+    background: var(--button-bg);
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Chat Toggle Button */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--button-bg);
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
 }
 
 /* Dark Mode */
@@ -139,5 +181,4 @@ body {
 
 .toggle-mode:hover {
     background: var(--button-hover);
-    transform: scale(1.05);
 }

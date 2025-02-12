@@ -20,13 +20,18 @@
             <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
             <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
         </div>
-
-        <a href="{{ url_for('chatbot') }}" class="chatbot-btn">💬 Open Chatbot</a>
     </div>
+
+    <div class="chat-toggle-btn" onclick="toggleChat()">💬</div>
 
     <script>
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
+        }
+
+        function toggleChat() {
+            let chatbot = document.getElementById("chatbot");
+            chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
         }
     </script>
 
