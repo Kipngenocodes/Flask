@@ -3,43 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kipngeno - Profile & Chatbot</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <title>Kipngeno Chepkwony - Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-center h-screen flex flex-col justify-center items-center">
-
-    <!-- Profile Card -->
+<body>
     <div class="profile-card">
         <h1>Hello, I'm Kipngeno Chepkwony</h1>
         <p>I am a Cybersecurity and Data Science enthusiast.</p>
-
-        <!-- Social Links -->
+        
         <div class="social-links">
             <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
             <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
             <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
             <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
         </div>
+
+        <!-- Button to Open Chatbot -->
+        <a href="{{ url_for('chatbot') }}" class="chatbot-btn">💬 Open Chatbot</a>
     </div>
-
-    <!-- Floating Chat Button -->
-    <button class="floating-btn" onclick="toggleChat()">💬</button>
-
-    <!-- Chatbot -->
-    <div class="chatbot-container" id="chatbot">
-        <div class="chat-header">
-            <span>Chat with Me</span>
-            <button class="close-btn" onclick="toggleChat()">❌</button>
-        </div>
-        <div class="chat-messages" id="chat-messages"></div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Type your message..." />
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="chatbot-container">
+        <div class="chat-header">Chat with Me</div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let messageInput = document.getElementById("message-input");
+            let message = messageInput.value.trim();
+            let chatMessages = document.getElementById("chat-messages");
+
+            if (!message) return;
+
+            chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
+            messageInput.value = "";
+
+            let response = await fetch("http://localhost:5000/telegram-webhook", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: "visitor", message: message })
+            });
+
+            let data = await response.json();
+            
+            setTimeout(() => {
+                chatMessages.innerHTML += `<div class="bot-message">${data.message || "I'll get back to you soon!"}</div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
