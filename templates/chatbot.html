@@ -3,50 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>Kipcodes - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
-    <div class="chatbot-container" id="chatbot">
-        <div class="chat-header" onclick="toggleChat()">Chat with Me</div>
-        <div class="chat-messages" id="chat-messages"></div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Type your message..." />
-            <button onclick="sendMessage()">Send</button>
+    <!-- Animated Background -->
+    <div class="background-waves"></div>
+
+    <!-- Profile Container -->
+    <div class="profile-card" id="profile-card">
+        <h1>Hello, I'm Kipngeno Chepkwony</h1>
+        <p>I am a Cybersecurity and Data Science enthusiast.</p>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
+            <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
+            <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
+            <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
         </div>
     </div>
 
-    <script>
-        function toggleChat() {
-            let chatbot = document.getElementById("chatbot");
-            chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
-        }
-
-        async function sendMessage() {
-            let messageInput = document.getElementById("message-input");
-            let message = messageInput.value.trim();
-            let chatMessages = document.getElementById("chat-messages");
-
-            if (!message) return;
-
-            chatMessages.innerHTML += `<div class="user-message">${message}</div>`;
-            messageInput.value = "";
-
-            let response = await fetch("http://localhost:5000/telegram-webhook", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ user_id: "visitor", message: message })
-            });
-
-            let data = await response.json();
-            
-            setTimeout(() => {
-                chatMessages.innerHTML += `<div class="bot-message">${data.message || "I'll get back to you soon!"}</div>`;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
-        }
-    </script>
+    <!-- Chat Toggle Button -->
+    <a href="/chatbot" class="chat-toggle-btn">💬</a>
 
 </body>
 </html>

@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kipngeno Chepkwony - Profile</title>
+    <title>Kipcodes - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
-    <div class="profile-card">
+    <!-- Animated Background -->
+    <div class="background-waves"></div>
+
+    <!-- Profile Container -->
+    <div class="profile-card" id="profile-card">
         <h1>Hello, I'm Kipngeno Chepkwony</h1>
         <p>I am a Cybersecurity and Data Science enthusiast.</p>
-        
+
+        <!-- Social Media Links -->
         <div class="social-links">
             <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
             <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
@@ -20,14 +26,8 @@
         </div>
     </div>
 
-    <div class="chat-toggle-btn" onclick="toggleChat()">💬</div>
-
-    <script>
-        function toggleChat() {
-            let chatbot = document.getElementById("chatbot");
-            chatbot.style.display = chatbot.style.display === "none" ? "flex" : "none";
-        }
-    </script>
+    <!-- Chat Toggle Button -->
+    <a href="/chatbot" class="chat-toggle-btn">💬</a>
 
 </body>
 </html>
