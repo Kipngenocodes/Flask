@@ -2,10 +2,17 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import datetime
+import os
 
+# Initialize Flask app
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///messages.db"
+
+# Database Configuration
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(BASE_DIR, "messages.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Initialize Database and CORS
 db = SQLAlchemy(app)
 CORS(app)
 
@@ -17,28 +24,33 @@ class Message(db.Model):
     reply = db.Column(db.String(500), nullable=True)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
+# Create tables
 with app.app_context():
     db.create_all()
 
-# Save Message from Telegram
+# Save Message from Telegram Webhook
 @app.route("/telegram-webhook", methods=["POST"])
 def telegram_webhook():
-    data = request.json
+    data = request.get_json()
+
+    if not data or "user_id" not in data or "message" not in data:
+        return jsonify({"error": "Invalid request"}), 400
+
     user_id = data["user_id"]
-    message = data["message"]
+    message_text = data["message"]
 
     # Save message to database
-    new_message = Message(user_id=user_id, message=message)
+    new_message = Message(user_id=user_id, message=message_text)
     db.session.add(new_message)
     db.session.commit()
 
-    return jsonify({"message": "Message saved!"})
+    return jsonify({"message": "Message saved!"}), 201
 
 # Get User Messages
-@app.route("/get-messages/<user_id>", methods=["GET"])
+@app.route("/get-messages/<string:user_id>", methods=["GET"])
 def get_messages(user_id):
     messages = Message.query.filter_by(user_id=user_id).all()
-    return jsonify([{"message": msg.message, "reply": msg.reply} for msg in messages])
+    return jsonify([{"message": msg.message, "reply": msg.reply} for msg in messages]), 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
