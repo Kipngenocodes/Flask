@@ -3,31 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kipcodes - Profile</title>
+    <title>Welcome to Kipcode</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Animated Background */
+        body {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Profile Styling */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            color: white;
+            max-width: 400px;
+        }
+
+        /* Floating Chatbot Button */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6a11cb;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .chat-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Animated Background -->
-    <div class="background-waves"></div>
+    <div class="profile-card">
+        <h1 class="text-4xl font-bold mb-4">Hello, I'm Kipngeno Chepkwony</h1>
+        <p class="text-lg opacity-90 mb-4">Cybersecurity & Data Science Enthusiast.</p>
 
-    <!-- Profile Container -->
-    <div class="profile-card" id="profile-card">
-        <h1>Hello, I'm Kipngeno Chepkwony</h1>
-        <p>I am a Cybersecurity and Data Science enthusiast.</p>
-
-        <!-- Social Media Links -->
-        <div class="social-links">
-            <a href="https://twitter.com/akcempire" target="_blank">Twitter</a>
-            <a href="https://www.linkedin.com/in/your_linkedin" target="_blank">LinkedIn</a>
-            <a href="https://github.com/kipngenocodes" target="_blank">GitHub</a>
-            <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
+        <!-- Social Links -->
+        <div class="flex justify-center space-x-4">
+            <a href="https://twitter.com/akcempire" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all">Twitter</a>
+            <a href="https://www.linkedin.com/in/your_linkedin" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all">LinkedIn</a>
+            <a href="https://github.com/kipngenocodes" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all">GitHub</a>
+            <a href="mailto:kipngenocodes@gmail.com" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all">Email Me</a>
         </div>
     </div>
 
-    <!-- Chat Toggle Button -->
-    <a href="/chatbot" class="chat-toggle-btn">💬</a>
+    <!-- Chatbot Button -->
+    <div class="chat-toggle-btn" onclick="window.location.href='/chatbot'">💬</div>
 
 </body>
 </html>
