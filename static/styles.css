@@ -1,26 +1,25 @@
-/* Root Variables for Colors */
+/* Root Variables */
 :root {
     --primary-color: #6a11cb;
     --secondary-color: #2575fc;
-    --background-light: #ffffff;
-    --background-dark: #1a1a2e;
     --text-light: #ffffff;
     --text-dark: #000000;
     --button-bg: #6a11cb;
     --button-hover: #2575fc;
-    --card-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* Background Animation */
-@keyframes backgroundGradient {
+/* Wavy Background Animation */
+@keyframes wavyBackground {
     0% { background: linear-gradient(120deg, #6a11cb, #2575fc); }
-    50% { background: linear-gradient(120deg, #ff4b2b, #ff416c); }
+    25% { background: linear-gradient(120deg, #ff4b2b, #ff416c); }
+    50% { background: linear-gradient(120deg, #ff9800, #ffeb3b); }
+    75% { background: linear-gradient(120deg, #4caf50, #8bc34a); }
     100% { background: linear-gradient(120deg, #6a11cb, #2575fc); }
 }
 
 body {
     font-family: Arial, sans-serif;
-    animation: backgroundGradient 10s infinite alternate ease-in-out;
+    animation: wavyBackground 10s infinite alternate ease-in-out;
     color: var(--text-light);
     text-align: center;
     margin: 0;
@@ -35,12 +34,11 @@ body {
 
 /* Profile Card */
 .profile-card {
-    background: var(--card-bg);
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 10px;
     max-width: 400px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease-in-out;
 }
 
 /* Social Links */
@@ -65,7 +63,7 @@ body {
     bottom: 20px;
     right: 20px;
     width: 350px;
-    background: var(--background-light);
+    background: rgba(255, 255, 255, 0.95);
     color: var(--text-dark);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -155,30 +153,4 @@ body {
 
 .chat-toggle-btn:hover {
     transform: scale(1.1);
-}
-
-/* Dark Mode */
-.dark-mode {
-    --background-light: #1a1a2e;
-    --text-light: #e0e0e0;
-    --button-bg: #ff4b2b;
-    --button-hover: #ff416c;
-}
-
-.toggle-mode {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background: var(--button-bg);
-    color: var(--text-light);
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.toggle-mode:hover {
-    background: var(--button-hover);
 }
