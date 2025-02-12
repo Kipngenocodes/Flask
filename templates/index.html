@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    
+    <button class="toggle-mode" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
     <div class="profile-card">
         <h1>Hello, I'm Kipngeno Chepkwony</h1>
         <p>I am a Cybersecurity and Data Science enthusiast.</p>
@@ -18,8 +21,14 @@
             <a href="mailto:kipngenocodes@gmail.com">Email Me</a>
         </div>
 
-        <!-- Button to Open Chatbot -->
         <a href="{{ url_for('chatbot') }}" class="chatbot-btn">💬 Open Chatbot</a>
     </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+
 </body>
 </html>
