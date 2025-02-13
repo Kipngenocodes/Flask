@@ -6,14 +6,17 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Enable cross-origin requests
 
-# ✅ Set up Telegram Bot API
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "7674177561:AAGUJnU7tp8XCBkfmmqF8aCd-nuMOrZ2SkU")  # Get token from environment
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "7437393011")  # Replace with your chat ID
+# ✅ Securely get Telegram Bot API Token & Chat ID from Environment Variables
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Must be set in Render
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")  # Must be set in Render
 
 def send_telegram_message(user_message):
     """ Sends a message to your Telegram bot """
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        return {"error": "Telegram bot token or chat ID not set"}
+
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    data = {"chat_id": TELEGRAM_CHAT_ID, "text": user_message}
+    data = {"chat_id": TELEGRAM_CHAT_ID, "text": f"User: {user_message}"}
 
     response = requests.post(url, json=data)
     return response.json()
